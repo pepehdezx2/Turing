@@ -1,0 +1,61 @@
+<header>
+        <div class = logo>
+            <h1 class=titulos> Turing</h1>
+            <h1 class="subtitulos"> &nbsp; Sistema de pr&eacute;stamo de material para alumnos</h1>
+        </div>        
+        <form>
+        <div class = login>
+                <button formaction="/users/login" class=loginbut id="entrar">Entrar</button>
+                <button formaction="/users/register" class="loginbut" id="registarse">Registrarse</button>
+            </div>        
+        </form>
+            
+    </header>
+<!--
+    <nav>
+        <ul class="barranav">
+            <li class="barra">
+                <a href="index.html"> <i class="fa fa-home" aria-hidden="true"></i> Home</a>                
+            </li>
+            <li class="barra">
+                <a href="#"> <i class="fa fa-user" aria-hidden="true"></i> Mi cuenta</a>
+            </li>
+            <li class="barra">
+                <a href="#"> <i class="fa fa-table" aria-hidden="true"></i> Lockers</a>
+            </li>
+            <li class="barra">
+                <a href="#"> <i class="fa fa-calendar" aria-hidden="true"></i> Reservar </a>
+            </li>
+            <li class="barra">
+                <a href="#"> <i class="fa fa-gift" aria-hidden="true"></i> Donaciones</a>
+            </li>
+        </ul>
+    </nav> -->
+    <br>
+    <br>
+    <div class= register>
+    <form action="/users/register" method="POST" class="form-register">
+        <p class="pform">Registro
+            <br>
+             <input type="text" id="uname" name="nombre" size="40" class="controls" placeholder="Ingresa tu nombre completo" value="<%= typeof name != 'undefined' ? name : '' %>"/>    
+            <br>
+            <input type="text" id="umail" name="nombre" size="40" class="controls" placeholder="Ingresa tu Correo electr&oacute;nico" value="<%= typeof name != 'undefined' ? name : '' %>"/>            
+            <br>
+             <input id="uid" type="text"size="40"  class="controls" placeholder="Ingresa tu Matr&iacute;cula, con A o LC" value="<%= typeof name != 'undefined' ? name : '' %>"/>
+            <br> 
+            <input id="umajor" type="text"size="40" class="controls" placeholder="Ingresa tu carrera (Siglas)" value="<%= typeof name != 'undefined' ? name : '' %>"/>
+            <br>
+            <input id="password" type="password" size="40" class="controls" placeholder="Ingresa tu contraseña" value="<%= typeof name != 'undefined' ? name : '' %>"/>
+            <br>
+            <input id="cpassword" type="password" size="40" class="controls" placeholder="Confirma tu contraseña" value="<%= typeof name != 'undefined' ? name : '' %>"/>
+            <br>
+            Al enviar el formulario, aceptas estar de acuerdo con los  <a href="#" class="RulesLockers" target="_blank">T&eacute;rminos y Condiciones</a>
+            <input type="reset"  class ="form-botons"value="Borrar">
+          <input type="submit" id="Benviar" class ="form-botons" value="Enviar">
+        </p>
+      </form>
+    </div>
+    <footer>
+        <p> Creado por Francisco Cancino y Jos&eacute; Antonio Hern&aacute;ndez &copy;</p>
+    </footer>
+    <script src="js/register.js"></script>
