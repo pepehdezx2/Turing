@@ -1,3 +1,4 @@
+/*
 var name = $("#uname").val();
 var correo = $("#umail").val();
 var matricula = $("#uid").val();
@@ -36,6 +37,6 @@ function sender(e,name,correo,matricula,carrera,contrasena,ccontrasena){
     }
 
 }
-
+*/
 
 

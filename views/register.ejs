@@ -2,7 +2,8 @@
         <div class = logo>
             <h1 class=titulos> Turing</h1>
             <h1 class="subtitulos"> &nbsp; Sistema de pr&eacute;stamo de material para alumnos</h1>
-        </div>        
+        </div>
+        <%- include ("./partials/messages") %>       
         <form>
         <div class = login>
                 <button formaction="/users/login" class=loginbut id="entrar">Entrar</button>
@@ -37,25 +38,27 @@
     <form action="/users/register" method="POST" class="form-register">
         <p class="pform">Registro
             <br>
-             <input type="text" id="uname" name="nombre" size="40" class="controls" placeholder="Ingresa tu nombre completo" value="<%= typeof name != 'undefined' ? name : '' %>"/>    
+             <input type="text" id="uname" name="nombre" size="40" class="controls" placeholder="Ingresa tu nombre completo">    
             <br>
-            <input type="text" id="umail" name="nombre" size="40" class="controls" placeholder="Ingresa tu Correo electr&oacute;nico" value="<%= typeof name != 'undefined' ? name : '' %>"/>            
+            <input type="text" id="umail" name="mail" size="40" class="controls" placeholder="Ingresa tu Correo electr&oacute;nico">            
             <br>
-             <input id="uid" type="text"size="40"  class="controls" placeholder="Ingresa tu Matr&iacute;cula, con A o LC" value="<%= typeof name != 'undefined' ? name : '' %>"/>
+             <input type="text" id="uid" name="mat" size="40" class="controls" placeholder="Ingresa tu Matr&iacute;cula, con A o LC">
             <br> 
-            <input id="umajor" type="text"size="40" class="controls" placeholder="Ingresa tu carrera (Siglas)" value="<%= typeof name != 'undefined' ? name : '' %>"/>
+            <input id="umajor" type="text"size="40" name="carrera" class="controls" placeholder="Ingresa tu carrera (Siglas)">
             <br>
-            <input id="password" type="password" size="40" class="controls" placeholder="Ingresa tu contraseña" value="<%= typeof name != 'undefined' ? name : '' %>"/>
+            <input id="password" type="password" size="40" name="password" class="controls" placeholder="Ingresa tu contraseña">
             <br>
-            <input id="cpassword" type="password" size="40" class="controls" placeholder="Confirma tu contraseña" value="<%= typeof name != 'undefined' ? name : '' %>"/>
+            <input id="cpassword" type="password" size="40" name="password2" class="controls" placeholder="Confirma tu contraseña">
             <br>
             Al enviar el formulario, aceptas estar de acuerdo con los  <a href="#" class="RulesLockers" target="_blank">T&eacute;rminos y Condiciones</a>
-            <input type="reset"  class ="form-botons"value="Borrar">
-          <input type="submit" id="Benviar" class ="form-botons" value="Enviar">
+           <button id="Benviar" class="form-botons">
+          Enviar
+        </button>
+        <input type="reset" class ="form-botons" value="Borrar">
         </p>
       </form>
     </div>
     <footer>
         <p> Creado por Francisco Cancino y Jos&eacute; Antonio Hern&aacute;ndez &copy;</p>
     </footer>
-    <script src="js/register.js"></script>
+    <!-- <script src="js/register.js"></script> -->

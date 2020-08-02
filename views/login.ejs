@@ -2,7 +2,8 @@
         <div class = logo>
             <h1 class=titulos> Turing</h1>
             <h1 class="subtitulos"> &nbsp; Sistema de pr&eacute;stamo de material para alumnos</h1>
-        </div>        
+        </div>
+        <%- include ("./partials/messages") %>        
         <form>
         <div class = login>
                 <button formaction="/users/login" class=loginbut id="entrar">Entrar</button>
@@ -37,9 +38,9 @@
         <form action="/users/login" method="POST" class="form-register">
             <p class="pform">Inicio de Sesi&oacute;n
                 <br>
-                 <input type="text" name="matr&iacute;cula" size="40" class="controls" placeholder="Ingresa tu matricula" value="<%= typeof name != 'undefined' ? name : '' %>"/>
+                 <input type="text" name="mail" size="40" class="controls" placeholder="Ingresa tu correo" value="<%= typeof name != 'undefined' ? name : '' %>"/>
                 <br>
-                <input type="password" name="contraseña" size="40" class="controls" placeholder="Ingresa tu contraseña" value="<%= typeof name != 'undefined' ? name : '' %>"/>            
+                <input type="password" name="password" size="40" class="controls" placeholder="Ingresa tu contraseña" value="<%= typeof name != 'undefined' ? name : '' %>"/>            
               <input type="submit" class ="form-botons" value="Entrar">
             </p>
           </form>
