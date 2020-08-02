@@ -412,6 +412,10 @@
         color: black;
         background-color: rgba(0, 153, 255, 0.459);
     }    
+    #peligro:hover{
+        color: white;
+        background-color: red;
+    }
     .barranav{
         display: flex;       
         height: 55px;
