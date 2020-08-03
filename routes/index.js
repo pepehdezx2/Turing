@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const path = require("path");
+const mongoose = require("mongoose");
 const Lockerdb = require("../models/Locker");
+const User = require("../models/User");
 const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 
 //Welcome page
@@ -36,6 +38,7 @@ router.get('/lockers', ensureAuthenticated, (req, res) =>
   })
 );
 
+// locker post function
 function hola(d1, d2){
   let d3=d1+d2;
   console.log(d3);
@@ -48,6 +51,60 @@ router.post('/lockers', ensureAuthenticated, (req, res) =>
     isAdmin: req.user.isAdmin,
     locker: req.user.locker
   }, hola("a", "b"))
+);
+
+// locker post function
+function admin(d3){
+  var d32=d3.split(" ");
+  User.findOneAndUpdate({plate:d32[0]}, {oscilloscope:1}, (err)=>{
+  	if(err){
+  		throw Error(error);
+  	}
+  });
+}
+
+ /*
+  User.findOne({plate: d32[0]}).then(user => {
+  	if (!user) {
+  		console.log("efe");
+  	}
+  });
+  */
+
+  /*var howmany;
+  if(d32[1]==="osciloscopio"){
+  	howmany=obj.oscilloscope + 1;
+  	User.update({ plate:d32[0] }, {
+  		oscilloscope: howmany
+  })
+  	}
+  	else if(d32[1]==="generador"){
+  		howmany=obj.fgenerator + 1;
+  		User.update({ plate:d32[0] }, {
+  			fgenerator: howmany
+  })
+  	}
+  	else if(d32[1]==="multimetro"){
+  		howmany=obj.multimeter + 1;
+  		User.update({ plate:d32[0] }, {
+  			multimeter: howmany
+  })
+  	}
+  	else if(d32[1]==="fuente"){
+  		howmany=obj.font + 1;
+  		User.update({ plate:d32[0] }, {
+  			font: howmany
+  })
+  	}
+  	*/
+
+
+// admin post
+router.post('/admin', ensureAuthenticated, (req, res) =>
+  res.render('admin.ejs', {
+    name: req.user.name,
+    isAdmin: req.user.isAdmin,
+  }, admin(req.body.info))
 );
 
 // locker rental
