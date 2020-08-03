@@ -39,6 +39,11 @@
             <li class="barra">
                 <a href="/donations"> <i class="fa fa-gift" aria-hidden="true"></i> Donaciones</a>
             </li>
+            <% if(isAdmin===true){ %>
+            <li class="barra">
+                <a href="/admin"> <i class="fas fa-users-cog" aria-hidden="true"></i> Administrar</a>
+            </li>
+            <% } %>
         </ul>
     </nav>
     <!--
