@@ -19,7 +19,11 @@ router.get('/dashboard', ensureAuthenticated, (req, res) =>
 router.get('/account', ensureAuthenticated, (req, res) =>
   res.render('account.ejs', {
     name: req.user.name,
-    isAdmin: req.user.isAdmin
+    isAdmin: req.user.isAdmin,
+    oscilloscope: req.user.oscilloscope,
+    fgenerator: req.user.fgenerator,
+    multimeter: req.user.multimeter,
+    font: req.user.font
   })
 );
 
@@ -32,13 +36,18 @@ router.get('/lockers', ensureAuthenticated, (req, res) =>
   })
 );
 
+function hola(d1, d2){
+  let d3=d1+d2;
+  console.log(d3);
+}
+
 // lockers post
 router.post('/lockers', ensureAuthenticated, (req, res) =>
   res.render('lockers.ejs', {
     name: req.user.name,
     isAdmin: req.user.isAdmin,
     locker: req.user.locker
-  })
+  }, hola("a", "b"))
 );
 
 // locker rental

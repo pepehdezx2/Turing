@@ -41,11 +41,57 @@
         </ul>
     </nav>
     <div class="classic">
-        <p>No hay material prestado</p>
+        <br>
+        <br>
+        <h2 class="subtitulos">prestamos</h2>
+        <br>
+        <form>
+
+        <input type="text" id="matmat" class="controls" placeholder="Matricula y Material">
+        <button id="botonlista" class="btn btn-success" method="POST">Añadir</button>
+    </form>
+    <div>
+        <ul id="lista">
+
+
+        </ul>
+
+    </div>
 
     </div>
     <br>
     <br>
+    <script> 
+   
+    
+    $("#botonlista").click(añadir);  
+    $("div").on("click",".borrar", deleter);//se le asigna la funcion de borrar a su respectivo boton
+//funciones para añadir articulo
+function añadir(e){
+    e.preventDefault();
+    var lista = $("#lista");
+    var res =  $("#matmat").val();
+    var res1 = res.split(" ");
+
+    var nuevoArticulo = $('<li class="controls fprp"> <p>'+ " matricula: " + res1[0]+ " prestado " + res1[1] +'&emsp; </p> <div> <button method="DELETE" class="borrar btn btn-primary">delete</button> </div> </li>')
+    lista.append(nuevoArticulo);
+}
+//funcion para borrar articulo
+function deleter(e){
+    e.preventDefault();
+    var padre = $(this).parent();
+    padre.parent().remove();
+}
+
+
+    
+    </script>
+
+
+
+
+
+
     <br>
     <footer>
         <p> Creado por Francisco Cancino y Jos&eacute; Antonio Hern&aacute;ndez &copy;</p>

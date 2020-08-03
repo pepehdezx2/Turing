@@ -32,6 +32,22 @@ const UserSchema = new mongoose.Schema({
   locker: {
     type: Number,
     default: 0
+  },
+  oscilloscope: {
+    type: Number,
+    default: 0
+  },
+  fgenerator: {
+    type: Number,
+    default: 0
+  },
+  multimeter: {
+    type: Number,
+    default: 0
+  },
+  font: {
+    type: Number,
+    default: 0
   }
 });
 

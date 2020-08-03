@@ -40,9 +40,38 @@
             <% } %>
         </ul>
     </nav>
+    <% if(oscilloscope === 0 && fgenerator === 0 && multimeter === 0 && font === 0){ %>
     <div class="classic">
         <p>Aun no tienes nada prestado</p>
-
+    <% } else{ %>
+    <div class="classic">
+    <table align="center" cellspacing="2" cellpadding="2" border="1">
+        <tr>
+            <th>
+                <img src="../img/oscilloscope.jpg" width="225px">
+                <br>
+                <p class="subtitulos">Osciloscopios prestados: <%= oscilloscope %></p>
+            </th>
+            <th>
+                <img src="../img/fgenerator.jpg" width="225px">
+                <br>
+                <p class="subtitulos">Generadores de funciones prestadas: <%= fgenerator %></p>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <img src="../img/multimeter.jpg" width="225px">
+                <br>
+                <p class="subtitulos">Multimetros prestados: <%= multimeter %></p>
+            </th>
+            <th>
+                <img src="../img/font.jpg" width="225px">
+                <br>
+                <p class="subtitulos">Fuentes prestadas: <%= font %></p>
+            </th>
+        </tr>
+    </table>
+    <% } %>
     </div>
     <br>
     <br>

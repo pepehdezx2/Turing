@@ -3,6 +3,10 @@
     font-family: Proto;
     font-size: 70px;
 }
+.fprp{
+    display: flex;
+    justify-content: center;
+}
 .subtitulos{
     color: white;
     font-family: Champagne;    
