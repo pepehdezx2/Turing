@@ -39,9 +39,25 @@ router.get('/lockers', ensureAuthenticated, (req, res) =>
 );
 
 // locker post function
-function hola(d1, d2){
-  let d3=d1+d2;
-  console.log(d3);
+function locker(a){
+	Lockerdb.findOne({isAvailable: true}, function(err,obj) {
+  	var x=obj.idl;
+  	User.findOneAndUpdate({plate:a}, {locker:x}, (err)=>{
+  	if(err){
+  		throw Error(error);
+  	}
+  });
+  	Lockerdb.findOneAndUpdate({idl:x}, {isAvailable:false}, (err)=>{
+  		if(err){
+  		throw Error(error);
+  	}
+  	});
+  	Lockerdb.findOneAndUpdate({idl:x}, {who:a}, (err)=>{
+  		if(err){
+  		throw Error(error);
+  	}
+  	});
+  });
 }
 
 // lockers post
@@ -50,54 +66,146 @@ router.post('/lockers', ensureAuthenticated, (req, res) =>
     name: req.user.name,
     isAdmin: req.user.isAdmin,
     locker: req.user.locker
-  }, hola("a", "b"))
+  }, locker(req.user.plate))
 );
 
-// locker post function
+// admin post function
 function admin(d3){
   var d32=d3.split(" ");
-  User.findOneAndUpdate({plate:d32[0]}, {oscilloscope:1}, (err)=>{
+  if(d32[1]==="recibe"){
+  	if(d32[2]==="osciloscopio"){
+  	 User.findOne({plate: d32[0]}, function(err,obj) {
+  	var x=obj.oscilloscope+1;
+  	User.findOneAndUpdate({plate:d32[0]}, {oscilloscope:x}, (err)=>{
   	if(err){
   		throw Error(error);
   	}
   });
-}
-
- /*
-  User.findOne({plate: d32[0]}).then(user => {
-  	if (!user) {
-  		console.log("efe");
+  }); 
+  }
+  if(d32[2]==="generador"){
+  	 User.findOne({plate: d32[0]}, function(err,obj) {
+  	var x=obj.fgenerator+1;
+  	User.findOneAndUpdate({plate:d32[0]}, {fgenerator:x}, (err)=>{
+  	if(err){
+  		throw Error(error);
   	}
   });
-  */
-
-  /*var howmany;
-  if(d32[1]==="osciloscopio"){
-  	howmany=obj.oscilloscope + 1;
-  	User.update({ plate:d32[0] }, {
-  		oscilloscope: howmany
-  })
+  }); 
+  }
+  if(d32[2]==="multimetro"){
+  	 User.findOne({plate: d32[0]}, function(err,obj) {
+  	var x=obj.multimeter+1;
+  	User.findOneAndUpdate({plate:d32[0]}, {multimeter:x}, (err)=>{
+  	if(err){
+  		throw Error(error);
   	}
-  	else if(d32[1]==="generador"){
-  		howmany=obj.fgenerator + 1;
-  		User.update({ plate:d32[0] }, {
-  			fgenerator: howmany
-  })
+  });
+  }); 
+  }
+  if(d32[2]==="fuente"){
+  	 User.findOne({plate: d32[0]}, function(err,obj) {
+  	var x=obj.font+1;
+  	User.findOneAndUpdate({plate:d32[0]}, {font:x}, (err)=>{
+  	if(err){
+  		throw Error(error);
   	}
-  	else if(d32[1]==="multimetro"){
-  		howmany=obj.multimeter + 1;
-  		User.update({ plate:d32[0] }, {
-  			multimeter: howmany
-  })
+  });
+  }); 
+  }
+  }
+  else if(d32[1]==="entrega"){
+  	if(d32[2]==="osciloscopio"){
+  	 User.findOne({plate: d32[0]}, function(err,obj) {
+  	var x
+  	 	if(obj.oscilloscope==0){
+  	 		x=0
+  	 	}
+  	 	else{
+  	 		x=obj.oscilloscope-1;
+  	 	}
+  	User.findOneAndUpdate({plate:d32[0]}, {oscilloscope:x}, (err)=>{
+  	if(err){
+  		throw Error(error);
   	}
-  	else if(d32[1]==="fuente"){
-  		howmany=obj.font + 1;
-  		User.update({ plate:d32[0] }, {
-  			font: howmany
-  })
+  });
+  }); 
+  }
+  if(d32[2]==="generador"){
+  	 User.findOne({plate: d32[0]}, function(err,obj) {
+  	var x
+  	 	if(obj.fgenerator==0){
+  	 		x=0
+  	 	}
+  	 	else{
+  	 		x=obj.fgenerator-1;
+  	 	}
+  	User.findOneAndUpdate({plate:d32[0]}, {fgenerator:x}, (err)=>{
+  	if(err){
+  		throw Error(error);
   	}
-  	*/
-
+  });
+  }); 
+  }
+  if(d32[2]==="multimetro"){
+  	 User.findOne({plate: d32[0]}, function(err,obj) {
+  	var x
+  	 	if(obj.multimeter==0){
+  	 		x=0
+  	 	}
+  	 	else{
+  	 		x=obj.multimeter-1;
+  	 	}
+  	User.findOneAndUpdate({plate:d32[0]}, {multimeter:x}, (err)=>{
+  	if(err){
+  		throw Error(error);
+  	}
+  });
+  }); 
+  }
+  if(d32[2]==="fuente"){
+  	 User.findOne({plate: d32[0]}, function(err,obj) {
+  	 	var x
+  	 	if(obj.font==0){
+  	 		x=0
+  	 	}
+  	 	else{
+  	 		x=obj.font-1;
+  	 	}
+  	User.findOneAndUpdate({plate:d32[0]}, {font:x}, (err)=>{
+  	if(err){
+  		throw Error(error);
+  	}
+  });
+  }); 
+  }
+  if(d32[2]==="locker"){
+  	Lockerdb.findOne({who: d32[0]}, function(err,obj) {
+  	if(!obj){
+  		console.log("no tiene locker")
+  	}
+  	else{
+  		var x=obj.idl;
+  	User.findOneAndUpdate({plate:d32[0]}, {locker:0}, (err)=>{
+  	if(err){
+  		throw Error(error);
+  	}
+  });
+  	Lockerdb.findOneAndUpdate({idl:x}, {isAvailable:true}, (err)=>{
+  		if(err){
+  		throw Error(error);
+  	}
+  	});
+  	Lockerdb.findOneAndUpdate({idl:x}, {who:""}, (err)=>{
+  		if(err){
+  		throw Error(error);
+  	}
+  	});
+  	}
+  });
+  }
+  }
+}
 
 // admin post
 router.post('/admin', ensureAuthenticated, (req, res) =>
