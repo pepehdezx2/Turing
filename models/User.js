@@ -28,6 +28,10 @@ const UserSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  locker: {
+    type: Number,
+    default: 0
   }
 });
 

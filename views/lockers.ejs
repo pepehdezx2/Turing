@@ -33,13 +33,22 @@
             </li>
         </ul>
     </nav>
+    <% if(locker===0){ %>
 	<div class="classic">
-		<p> El servicio de lockers solo estar&aacute; disponible para el laboratorio de microcontroladores</p>
+        <br>
+		<p>Los lockers podran ser asignados despu&eacute;s de la primera semana de clases</p>
 		<p > Favor de leer el <a href="files/reglamento_Lockers.pdf" class="RulesLockers" target="_blank">Reglamento de lockers</a></p>
-		<form >
+		<form action="/lockers" method="POST">
 			<button class="form-botons" formaction="">Recibir locker</button>
 		</form>
-		<p>Tienes asignado el locker #16 </p>
+        <% } else { %>
+        <div class="classic">
+		<p class="subtitulos">Tienes asignado el locker #<%= locker %></p>
+        <img src="../img/locker.jpg" width="400">
+        <br>
+        <br>
+    </div>
+        <% } %>
 	</div>
 	<br>
 	<br>
